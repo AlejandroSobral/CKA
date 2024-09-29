@@ -10,36 +10,52 @@ kubectl: interface to run & manage applications
 Pod-to-Pod: Handled by network plugin
 Container-to-container: handled within the pod
 
+## Pre-steps
 
+Create a new user and make it sudoer:
+
+Execute this in all nodes.
+
+Create new user:
+```bash
+sudo adduser worker1
+```
+Make it sudoer:
+```bash
+sudo usermod -aG sudo worker1
+```
 
 ### Commands for Lab
 
-Execute this in Control-Plane & Worker nodes as well.
+Execute this in all nodes.
 ```bash
 git clone https://github.com/sandervanvugt/cka
 ```
+Install CRI (Container Run-time Interface), on all nodes:
 ```bash
-sudo cka/setup-container.sh ## Install CRI (Container Run-time Interface)
+sudo cka/setup-container.sh 
 ```
-Do check using:
+Do check using (On Control node):
 
 ```bash
 sudo systemctl status containerd | grep Active
 ```
+
+Install kubetools on all nodes:
 ```bash
 sudo cka/setup-kubetools.sh 
 ```
 
-Start the Kluster:
+Start the Kluster on control node:
 
 ```bash
 sudo kubeadm init
 ```
 Setup up the clients (This will be prompted on the output message from previous command):
 ```bash
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 Verify:
