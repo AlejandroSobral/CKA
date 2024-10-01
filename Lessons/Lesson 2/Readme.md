@@ -5,6 +5,10 @@ kubeadm: install & manage the cluster
 kubelet: service that starts the Pods
 kubectl: interface to run & manage applications
 
+During the installation some steps failed and this was used as alternative:
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
 ### Communications:
 
 Pod-to-Pod: Handled by network plugin
@@ -51,7 +55,7 @@ Start the Kluster on control node:
 ```bash
 sudo kubeadm init
 ```
-Setup up the clients (This will be prompted on the output message from previous command):
+Setup up the cluster (This will be prompted on the output message from previous command):
 ```bash
   mkdir -p $HOME/.kube
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -77,6 +81,11 @@ kubectl get pods -n  kube-system
 Take the output of "kubeadm init" and execute it on the Worker nodes:
 ```bash
 sudo kubeadm join <IP:PORT> --token <token> --discovery-token-ca-cert-hash sha256:key
+```
+
+In case the join command needs to be prompted out again>
+```bash
+kubeadm token create --print-join-command
 ```
 
 Check final status:
