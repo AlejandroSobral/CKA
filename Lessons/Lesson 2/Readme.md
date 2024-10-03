@@ -6,9 +6,11 @@ kubelet: service that starts the Pods
 kubectl: interface to run & manage applications
 
 During the installation some steps failed and this was used as alternative:
-https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
-sudo apt install socat
+- https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+- https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+- sudo apt install socat
+- sudo apt install runc containerd
+
 
 ### Communications:
 
