@@ -76,3 +76,18 @@ https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinar
 - sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
 ```
 </details>
+
+---------------------------------
+
+Apply Stateful:
+
+```bash
+kubectl apply -f 00-stateful-example.yaml
+```
+
+Verify:
+
+
+```bash
+kubectl get all
+```
