@@ -85,9 +85,16 @@ Apply Stateful:
 kubectl apply -f 00-stateful-example.yaml
 ```
 
-Verify:
-
+Verify by:
 
 ```bash
-kubectl get all
+kubectl get statefulset
+```
+
+```bash
+kubectl get pods
+```
+
+```bash
+kubectl get pvc
 ```
