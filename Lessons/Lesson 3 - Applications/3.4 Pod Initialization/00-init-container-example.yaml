@@ -8,6 +8,7 @@ spec:
     image: nginx
     ports:
     - containerPort: 80
+  #This part will run only during container initialization
   initContainers:
   - name: install
     image: busybox
