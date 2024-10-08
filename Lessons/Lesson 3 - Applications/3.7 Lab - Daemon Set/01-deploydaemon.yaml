@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  creationTimestamp: null
+  labels:
+    app: deploydaemon
+  name: deploydaemon
+spec:
+  selector:
+    matchLabels:
+      app: deploydaemon
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: deploydaemon
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {}
