@@ -12,7 +12,7 @@ The storage class is the API object that represent the Storage Provisioner. Ther
 
 graph LR
     subgraph SITE
-        A( (PV) PERSISTENT VOLUME)
+        A( [PV] PERSISTENT VOLUME)
         B(Storage Class)
         C(Storage provisioner)
     end
