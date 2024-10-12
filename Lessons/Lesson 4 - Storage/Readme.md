@@ -76,37 +76,4 @@ graph LR
     C --> B
 ```
 
----------------------------------
 
-PV manifest:
-```YAML
-kind: PersistentVolume
-apiVersion: v1
-metadata:
-  name: pv-volume
-  labels:
-      type: local
-spec:
-  storageClassName: demo
-  capacity:
-    storage: 2Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mydata"
-```
-
-In this context, storageClassName is working as a labeling. Using that, the pod will connect to the PVC will never reach the PV.
-
-Commands:
-
-```bash
-kubectl apply -f labs/pv.yaml
-```
-
-```bash
-kubectl get pv
-```
-```bash
-kubectl get pv -o yaml
-```
