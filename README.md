@@ -1,5 +1,5 @@
 # CKA
-CKA resources
+This repo contains my path towards the CKA. It will take place in 2025.
 
 <div style="display: flex; justify-content: center;">
   <div style="margin: 0 10px;">
@@ -8,4 +8,22 @@ CKA resources
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------
+
+### Resources:
 - https://github.com/anilitblr/certified-kubernetes-administrator
