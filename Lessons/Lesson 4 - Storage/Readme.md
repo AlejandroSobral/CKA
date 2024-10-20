@@ -54,9 +54,16 @@ The storage class is the API object that represent the Storage Provisioner. Ther
 graph LR
     subgraph SITE
         A(PERSISTENT VOLUME)
+        subgraph Implements
         B(Storage Class)
+        end
+            subgraph Storage Provisioner POD
+            C(Storage Provisioner)
+            end
         C(Storage provisioner)
     end
+
+
 
     subgraph APPLICATION
         subgraph Pod
