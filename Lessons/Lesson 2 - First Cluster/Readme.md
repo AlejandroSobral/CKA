@@ -104,7 +104,7 @@ Be aware the both nodes can take some time to be ready.
 ```bash
 kubectl run testpod --image=nginx
 ```
-Check it by
+Check it by:
 
 ```bash
 kubectl get pods
