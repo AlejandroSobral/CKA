@@ -33,3 +33,4 @@ Should you happen to find some bug, do not hesitate to report it.
 
 ### Resources:
 - https://github.com/anilitblr/certified-kubernetes-administrator
+- https://github.com/sandervanvugt/cka
