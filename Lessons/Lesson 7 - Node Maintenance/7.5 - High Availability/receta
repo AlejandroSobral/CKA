@@ -1,0 +1,59 @@
+export CONTROL_PLANE_NODES_1=192.168.1.36
+export CONTROL_PLANE_NODES_2=192.168.1.37
+export CONTROL_PLANE_NODES_3=192.168.1.39
+export VIP=192.168.1.50
+talosctl gen config MyHaCluster https://$VIP:6443 --output-dir _out 
+
+
+Edit the controplane.yaml
+
+At machine.network
+
+```YAML
+network:
+     interfaces:
+      - interface: enp0s3 # This came from default Talos iso
+        dhcp: true
+        vip:
+          ip: 192.168.1.50/24
+```
+
+talosctl apply-config --insecure --nodes $CONTROL_PLANE_NODES_1 --file _out/controlplane.yaml
+talosctl apply-config --insecure --nodes $CONTROL_PLANE_NODES_2 --file _out/controlplane.yaml
+talosctl apply-config --insecure --nodes $CONTROL_PLANE_NODES_3 --file _out/controlplane.yaml
+
+
+
+talosctl config endpoint $VIP
+talosctl config node $CONTROL_PLANE_NODES_1 $CONTROL_PLANE_NODES_2
+export TALOSCONFIG="_out/talosconfig"
+
+Edit the talosconfig endpoint pointing at Node 1. (Could be to node 2)
+talosctl bootstrap --nodes $CONTROL_PLANE_NODES_1
+
+
+talosctl containers -k --nodes $CONTROL_PLANE_NODES_1
+talosctl containers -k --nodes $CONTROL_PLANE_NODES_2
+
+Delete 1 node from the talosconfig file
+
+
+Then back endpoint to .50 at talosconfig
+talosctl kubeconfig . --endpoints $VIP --talosconfig _out/talosconfig
+export KUBECONFIG=./kubeconfig
+
+
+
+
+export WORKER_IP_1=192.168.1.38
+export WORKER_IP_2=192.168.1.40
+talosctl apply-config --insecure --nodes $WORKER_IP_1 --file _out/worker.yaml
+talosctl apply-config --insecure --nodes $WORKER_IP_2 --file _out/worker.yaml
+
+kubectl label node talos-oqp-h0p  node-role.kubernetes.io/worker=worker
+kubectl label node talos-2c9-f9g  node-role.kubernetes.io/worker=worker
+
+talosctl -n 192.168.1.36,192.168.1.37,192.168.1.38 logs -f --tail=1 networkd | grep vip
+
+kubectl create deployment firsttalos --image=nginx --replicas=2
+kubectl scale deployment firsttalos --replicas=3
