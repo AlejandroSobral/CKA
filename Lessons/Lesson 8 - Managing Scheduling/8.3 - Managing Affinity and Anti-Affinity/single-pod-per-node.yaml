@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: single-pod-per-node
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: single-node
+  template:
+    metadata:
+      labels:
+        app: single-node
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        imagePullPolicy: IfNotPresent
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - single-node
+            topologyKey: "kubernetes.io/hostname" 
