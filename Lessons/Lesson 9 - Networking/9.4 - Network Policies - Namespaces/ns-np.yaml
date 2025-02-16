@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  namespace: default   # Change namespace if needed
+  name: deny-cross-namespace
+spec:
+  podSelector: {}      # Applies to all pods in this namespace
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector: {}   # Allows only traffic from pods within the same namespace

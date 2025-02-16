@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-np-ns
+  namespace: np-ns
+  labels:
+    app: sleepy
+spec:
+  containers:
+  - name: np-ns
+    image: busybox
+    command:
+    - sleep
+    - "3600"

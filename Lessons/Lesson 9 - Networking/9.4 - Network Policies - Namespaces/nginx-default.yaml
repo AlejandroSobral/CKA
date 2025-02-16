@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: np-nginx
+  namespace: default
+  labels: 
+    app: np-nginx
+spec:
+  containers:
+  - name: np-nginx
+    image: nginx:latest
