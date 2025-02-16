@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sleepybox1
+  namespace: default
+  labels:
+    app: sleepybox1
+spec:
+  containers:
+  - name: sleepybox1
+    image: busybox
+    command:
+    - sleep
+    - "3600"
+
+...
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sleepybox2
+  namespace: default
+  labels:
+    app: sleepybox2
+spec:
+  containers:
+  - name: sleepybox2
+    image: busybox
+    command:
+    - sleep
+    - "3600"

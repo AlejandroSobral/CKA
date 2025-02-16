@@ -1,0 +1,41 @@
+# Namespace Creation
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: restricted
+  labels:
+    name: restricted
+...
+
+---
+
+# Pod nginx creation. This will 'receive' the connections.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lab9-nginx  # Consistent name with the service
+  namespace: restricted
+  labels:
+    app: lab9-nginx  # Consistent label with the service
+spec:
+  containers:
+  - name: lab9-nginx
+    image: nginx:latest
+    ports: # Expose the port the container is listening on
+    - containerPort: 80 # Nginx listens on port 80 inside the container
+...
+
+---
+# Expose the service
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab9-nginx-service
+  namespace: restricted
+spec:
+  selector:
+    app: lab9-nginx  # Use the SAME label as the Pod
+  ports:
+  - protocol: TCP
+    port: 80 # Port the service exposes
+    targetPort: 80 # Port the container listens on

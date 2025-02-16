@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-default-busybox1
+  namespace: restricted  # Apply the NetworkPolicy in the 'restricted' namespace
+spec:
+  podSelector: # Apply to pods with these labels in the 'restricted' namespace
+    matchLabels:
+      app: lab9-nginx # Replace with the actual labels of your webserver pod if different
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: default # Allow from the 'default' namespace
+    - podSelector: # Further restrict to pods with these labels in the 'default' namespace
+        matchLabels:
+          app: sleepybox1 # Replace with the actual labels of your sleepybox1 pod if different
+  policyTypes:
+  - Ingress
