@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-ok-sa-pod
+  name: mysapod
 spec:
   serviceAccountName: mysa
   containers:
   - name: alpine
-    image: alpine:latest
+    image: alpine:3.9
     command:
     - "sleep"
     - "3600"
