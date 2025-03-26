@@ -45,5 +45,5 @@ Create a ServiceAccount that has permissions to create Pods, Deployments, Daemon
 
 
 - Question 11: Configuring Taints and Tolerations
-Configure node worker2 such that it will noly allow Pods to run that have been configured with the setting type:db
+Configure node worker2 such that it will only allow Pods to run that have been configured with the setting type:db
 After verifying this works, remove the node restriction to return to normal operation.
