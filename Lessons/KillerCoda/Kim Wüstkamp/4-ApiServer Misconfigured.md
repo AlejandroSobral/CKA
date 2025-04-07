@@ -6,12 +6,12 @@ The Apiserver is not coming up, the manifest is misconfigured in 3 places. Fix i
 
 ---------------------------------------------------------------------
 
-journalctl | grep .yaml
-/var/log/pods
-crictl logs
+### Demo
 
-
+Start by making a copy of the original YAML:
+```bash
 cp /etc/kubernetes/manifests/kube-apiserver.yaml ~/kube-apiserver.yaml.wrong
+```
 
 <details>
 
