@@ -1,0 +1,1 @@
+https://github.com/killer-sh/cks-course-environment?tab=readme-ov-file

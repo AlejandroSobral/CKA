@@ -28,7 +28,7 @@ Install the MinIO Operator using Helm in Namespace minio. Then configure and cre
 Solve this question on: ssh cka3962
 
 - There are two Pods named o3db-* in Namespace project-h800. The Project H800 management asked you to scale these down to one replica to save resources.
-- 
+
 ----------------------------------------------------
 
 ### Question 4
