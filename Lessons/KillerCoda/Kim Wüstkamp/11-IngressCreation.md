@@ -61,6 +61,10 @@ Labels:           app=asia
 
 k describe -n world pod europe-6c7579bb-82v6d | grep Labels
 Labels:           app=europe
+
+k -n ingress-nginx get svc ingress-nginx-controller
+NAME                       TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+ingress-nginx-controller   NodePort   10.103.76.222   <none>        80:30080/TCP,443:30443/TCP   9m33s
 ```
 
 From [Docs](https://kubernetes.io/docs/concepts/services-networking/ingress/): "You must have an Ingress controller to satisfy an Ingress. Only creating an Ingress resource has no effect." According to the instructions, "The Nginx Ingress Controller has been installed". 
@@ -68,49 +72,41 @@ All good.
 
 Check the existing ingressClass:
 ```bash
+k get ingressclass
 NAME    CONTROLLER             PARAMETERS   AGE
 nginx   k8s.io/ingress-nginx   <none>       7m5s
 ```
 
-ingress-europe.yaml
+Having this [example](https://raw.githubusercontent.com/kubernetes/website/main/content/en/examples/service/networking/ingress-wildcard-host.yaml) into consideration, let's create:
+
+
+eurasia.yaml
 ```YAML
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-europe
+  name: world
   namespace: world
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx
+  ingressClassName: nginx # k get ingressclass
   rules:
-  - http:
+  - host: "world.universe.mine"
+    http:
       paths:
-      - path: /europe
-        pathType: Prefix
+      - pathType: Prefix
+        path: "/europe"
         backend:
           service:
             name: europe
             port:
               number: 80
-```
-
-ingress-asia.yaml
-```YAML
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress-asia
-  namespace: world
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  ingressClassName: nginx
-  rules:
-  - http:
+  - host: "world.universe.mine"
+    http:
       paths:
-      - path: /asia
-        pathType: Prefix
+      - pathType: Prefix
+        path: "/asia"
         backend:
           service:
             name: asia
@@ -118,24 +114,21 @@ spec:
               number: 80
 ```
 
-Output:
-```bash
-controlplane:~$ k apply -f ingress-europe.yaml 
-ingress.networking.k8s.io/ingress-europe created
-controlplane:~$ curl http://world.universe.mine:30080/europe
+&nbsp;
 
+The Ingress let the traffic get inside and re-directs its towards the selected Services. Those are ClusterIPs, that works inside the Cluster only.
+
+Output demo:
+```bash
+controlplane:~$ k apply -f eurasia.yaml 
+ingress.networking.k8s.io/world created
+
+controlplane:~$ curl http://world.universe.mine:30080/europe
 hello, you reached EUROPE
 controlplane:~$ curl http://world.universe.mine:30080/asia  
-<html>
-<head><title>404 Not Found</title></head>
-<body>
-<center><h1>404 Not Found</h1></center>
-<hr><center>nginx</center>
-</body>
-</html>
-controlplane:~$ k apply -f as.yaml 
-ingress.networking.k8s.io/ingress-asia created
-controlplane:~$ curl http://world.universe.mine:30080/asia
 hello, you reached ASIA
 ```
+&nbsp;
+
+And that's it!
 
