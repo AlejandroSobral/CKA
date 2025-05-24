@@ -1,0 +1,28 @@
+#Create a PersistentVolume (PV) named my-pv-cka with the following properties:
+#Storage capacity: 100Mi
+#Access mode: ReadWriteOnce
+#Host path: /mnt/data
+#Storage class: standard
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv-cka
+spec:
+  capacity:
+    storage: 100Mi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: standard
+  hostPath:
+    path: "/mnt/data"
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node01

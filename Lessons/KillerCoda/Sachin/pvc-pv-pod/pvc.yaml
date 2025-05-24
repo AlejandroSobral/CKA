@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc-cka
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeName: my-pv-cka
+  resources:
+    requests:
+      storage: 50Mi

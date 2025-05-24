@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod-cka
+spec:
+  volumes:
+    - name: nginx-pvc-cka
+      persistentVolumeClaim:
+        claimName: nginx-pvc-cka
+  containers:
+    - name: my-container
+      image: nginx:latest
+      volumeMounts:
+        - mountPath: "/var/www/html"
+          name: nginx-pvc-cka
+  tolerations:
+  - key: "node-role.kubernetes.io/control-plane"
+    operator: "Exists"
+    effect: "NoSchedule"
