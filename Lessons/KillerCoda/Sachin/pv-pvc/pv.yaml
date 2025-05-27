@@ -1,0 +1,33 @@
+# Name the PV as gold-pv-cka -- OK
+# Set the capacity to 50Mi -- OK
+# Use the volume type hostpath with the path /opt/gold-stc-cka -- OK
+# Assign the storage class as gold-stc-cka .
+# Ensure that the PV is created on node01 , where the /opt/gold-stc-cka directory already exists.
+# Apply a label to the PV with key tier and value white .
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gold-pv-cka
+  labels:
+    tier: white
+spec:
+  storageClassName: gold-stc-cka # Empty string must be explicitly set otherwise default StorageClass will be set
+  capacity:
+    storage: 50Mi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: gold-stc-cka
+  hostPath:
+    type: DirectoryOrCreate
+    path: /opt/gold-stc-cka
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node01

@@ -1,0 +1,21 @@
+# Name the PVC as gold-pvc-cka .
+# Request 30Mi of storage from the PV gold-pv-cka using the matchLabels criterion.
+# Use the gold-stc-cka storage class.
+# Set the access mode to ReadWriteMany .
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gold-pvc-cka
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: gold-stc-cka # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeMode: Filesystem
+  #volumeName: gold-pv-cka
+  resources:
+    requests:
+      storage: 30Mi
+  selector:
+    matchLabels:
+      tier: white
