@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"nginx-deployment","namespace":"default"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"nginx"}},"template":{"metadata":{"labels":{"app":"nginx"}},"spec":{"containers":[{"image":"nginx:latest","name":"nginx-container","ports":[{"containerPort":80}]}],"initContainers":[{"command":["shell","echo 'Welcome To KillerCoda!'"],"image":"busybox","name":"init-container","volumeMounts":[{"mountPath":"/etc/nginx/nginx.conf","name":"nginx-config"}]}],"volumes":[{"configMap":{"name":"nginx-configuration"},"name":"nginx-config"}]}}}}
+  creationTimestamp: "2025-05-28T23:54:28Z"
+  generation: 1
+  name: nginx-deployment
+  namespace: default
+  resourceVersion: "6994"
+  uid: 53812aa4-0d25-4aab-818b-549d35cbec2a
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: nginx:latest
+        imagePullPolicy: Always
+        name: nginx-container
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      initContainers:
+      - command:
+        - shell
+        - echo 'Welcome To KillerCoda!'
+        image: busybox
+        imagePullPolicy: Always
+        name: init-container
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/nginx/nginx.conf
+          name: nginx-config
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: nginx-configuration
+        name: nginx-config
+status:
+  conditions:
+  - lastTransitionTime: "2025-05-28T23:54:28Z"
+    lastUpdateTime: "2025-05-28T23:54:28Z"
+    message: Deployment does not have minimum availability.
+    reason: MinimumReplicasUnavailable
+    status: "False"
+    type: Available
+  - lastTransitionTime: "2025-05-28T23:54:28Z"
+    lastUpdateTime: "2025-05-28T23:54:28Z"
+    message: ReplicaSet "nginx-deployment-7df8cc9d85" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  replicas: 1
+  unavailableReplicas: 1
+  updatedReplicas: 1
