@@ -42,7 +42,7 @@ status: {}
 
 # Service
 
-k expose pod nginx-pod-cka --name=nginx-service-cka --port=80
+k expose pod nginx-pod-cka --name=nginx-service-cka --port=80 --targetport=80
 
 # nslookup
 k exec -it busybox-6b7bd556f9-9rv72 -- nslookup nslookup nginx-service-cka
