@@ -13,3 +13,4 @@ spec:
       volumeMounts:
         - mountPath: "/var/www/html"
           name: task-pv-storage
+
