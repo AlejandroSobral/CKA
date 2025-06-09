@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cache
+  name: cache-deployment
+spec:
+  strategy:
+    RollingUpdate:
+        maxUnavailable: 30%
+        maxSurge: 45%
+    type: RollingUpdate
+
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cache-deployment
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: cache-deployment
+    spec:
+      containers:
+      - image: redis:7.0.13
+        name: redis
+        resources: {}
+status: {}
