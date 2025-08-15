@@ -8,4 +8,4 @@ namespace: prod-namespace
 resources:
   - ../../base
 patchesStrategicMerge:
-  - deployment-patch.yaml
+  - deployment.yaml
