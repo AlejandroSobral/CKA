@@ -5,8 +5,9 @@ bases:
   - ../../base
 nameSuffix: -prod
 namespace: prod
-patchesStrategicMerge:
+resources:
   - deployment.yaml
+  - namespace.yaml
 images:
   - name: my-app:latest
     newTag: prod-456

@@ -5,8 +5,9 @@ namespace: dev
 bases:
   - ../../base
 nameSuffix: -dev
-patchesStrategicMerge:
+resources:
   - deployment.yaml
+  - namespace.yaml
 images:
   - name: my-app:latest
     newTag: dev-123
