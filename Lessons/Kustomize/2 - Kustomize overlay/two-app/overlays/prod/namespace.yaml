@@ -1,0 +1,5 @@
+# Explicitly define the namespace for the prod environment.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod-namespace

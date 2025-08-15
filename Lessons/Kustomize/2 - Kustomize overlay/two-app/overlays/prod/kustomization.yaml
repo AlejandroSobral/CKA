@@ -2,10 +2,15 @@
 # - references the base directory.
 # - sets the namespace for all resources.
 # - applies the replica count patch.
+# NOTE: 'patchesStrategicMerge' is deprecated. Use 'patches' instead.
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: prod-namespace
 resources:
   - ../../base
-patchesStrategicMerge:
-  - deployment.yaml
+  - namespace.yaml
+patches:
+  - path: deployment.yaml
+    target:
+      kind: Deployment
+      name: my-busybox-app
