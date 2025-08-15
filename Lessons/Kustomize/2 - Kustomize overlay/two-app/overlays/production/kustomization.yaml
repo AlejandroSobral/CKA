@@ -4,7 +4,6 @@ kind: Kustomization
 bases:
   - ../../base
 nameSuffix: -prod
-namespace: prod
 resources:
   - deployment.yaml
   - namespace.yaml
