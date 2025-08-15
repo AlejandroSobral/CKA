@@ -1,0 +1,9 @@
+# overlays/dev/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels: 
+    env: dev
+spec:
+  replicas: 1

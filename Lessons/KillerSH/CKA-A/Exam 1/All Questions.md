@@ -8,6 +8,20 @@ You're asked to extract the following information out of kubeconfig file /opt/co
 - Write the name of the current context into /opt/course/1/current-context
 - Write the client-certificate of user account-0027 base64-decoded into /opt/course/1/cert
 
+
+
+```bash
+#1st
+controlplane:~$ k config get-contexts
+CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPACE
+*         kubernetes-admin@kubernetes   kubernetes   kubernetes-admin 
+
+#2nd
+kubernetes-admin@kubernetes
+
+#3rd 
+cat /var/lib/kubelet/pki/kubelet-client-current.pem
+```
 ----------------------------------------------
 
 ### Question 2
@@ -39,6 +53,95 @@ Check all available Pods in the Namespace project-c13 and find the names of thos
 
 - Write the Pod names into /opt/course/4/pods-terminated-first.txt.
 
+
+
+- Manual scenario creation:
+
+<details>
+
+<summary>q4.yaml</summary>
+
+```
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: project-c13
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-alpha
+  namespace: project-c13
+spec:
+  containers:
+  - name: container-one
+    image: busybox
+    command: ["sh", "-c", "echo 'Hello from Pod Alpha' && sleep 3600"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-beta
+  namespace: project-c13
+spec:
+  containers:
+  - name: container-two
+    image: busybox
+    command: ["sh", "-c", "echo 'Hello from Pod Beta' && sleep 3600"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-gamma
+  namespace: project-c13
+spec:
+  containers:
+  - name: container-three
+    image: busybox
+    command: ["sh", "-c", "echo 'Hello from Pod Gamma' && sleep 3600"]
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-delta
+  namespace: project-c13
+spec:
+  containers:
+  - name: container-four
+    image: busybox
+    command: ["sh", "-c", "echo 'Hello from Pod Delta' && sleep 3600"]
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "500m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+```
+
+</details>
+
+```bash
+controlplane:~$ k get pods --sort-by {.status.qosClass}  -o custom-columns='NAME:.metadata.name,QOS:.status.qosClass'
+NAME        QOS
+pod-alpha   BestEffort
+pod-beta    BestEffort
+pod-gamma   Burstable
+pod-delta   Guaranteed
+```
+
+As per the output, the Alpha & Beta will be evicted first; gamma afterwards. Delta is guaranteed; as long as possible.
+
 ----------------------------------------------------
 
 ### Question 5
@@ -60,6 +163,14 @@ kubectl kustomize /opt/course/5/api-gateway/prod | kubectl apply -f -
   - Apply your changes for staging and prod so they're reflected in the cluster
 
 
+```bash
+k autoscale -h
+
+kubectl autoscale deployment prod --min=2 --max=4 --cpu-percentage=50
+```
+
+Sigue acá:
+https://killer.sh/attendee/df264a28-5063-4d6f-a0dd-24574706967d/content
 ----------------------------------------------------
 
 ### Question 6
