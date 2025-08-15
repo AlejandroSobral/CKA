@@ -1,7 +1,5 @@
-# base/kustomization.yaml
+# The base Kustomization file simply lists the resources it contains.
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - deployment.yaml
-  - service.yaml
-  - namespace.yaml

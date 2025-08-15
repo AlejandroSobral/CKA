@@ -1,0 +1,7 @@
+# This patch modifies the base deployment to set the replica count for the prod environment.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-busybox-app
+spec:
+  replicas: 10 # Prod environment will have 10 replicas.

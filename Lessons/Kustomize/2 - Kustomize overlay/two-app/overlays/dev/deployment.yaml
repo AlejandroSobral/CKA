@@ -1,10 +1,7 @@
-# overlays/dev/deployment.yaml
+# This patch modifies the base deployment to set the replica count for the dev environment.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: dev
-  name: my-app
-  labels: 
-    env: dev
+  name: my-busybox-app
 spec:
-  replicas: 1
+  replicas: 3 # Dev environment will have 3 replicas.

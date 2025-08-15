@@ -1,11 +1,11 @@
-# This Kustomization file for the dev overlay:
+# This Kustomization file for the prod overlay:
 # - references the base directory.
 # - sets the namespace for all resources.
 # - applies the replica count patch.
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: dev-namespace
+namespace: prod-namespace
 resources:
   - ../../base
 patchesStrategicMerge:
-  - deployment.yaml
+  - deployment-patch.yaml

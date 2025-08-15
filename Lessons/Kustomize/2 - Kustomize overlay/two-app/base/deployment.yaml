@@ -1,20 +1,22 @@
-# base/deployment.yaml
+# A common, base deployment manifest.
+# Note that this doesn't specify a namespace. Kustomize will add one later.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: my-busybox-app
+  labels:
+    app: busybox
 spec:
-  replicas: 1
+  replicas: 1 # This will be overridden by the overlays.
   selector:
     matchLabels:
-      app: my-app
+      app: busybox
   template:
     metadata:
       labels:
-        app: my-app
+        app: busybox
     spec:
       containers:
-        - name: my-app-container
-          image: my-app:latest
-          ports:
-            - containerPort: 8080
+        - name: busybox-container
+          image: busybox
+          command: ["sh", "-c", "echo 'Hello from Kustomize!' && sleep 3600"]
