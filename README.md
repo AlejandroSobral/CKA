@@ -25,15 +25,7 @@ Should you happen to find some bug, do not hesitate to report it.
 
 - Bookmark:
   - Exam A: https://killer.sh/attendee/df264a28-5063-4d6f-a0dd-24574706967d/content
-    -  Question 5 -> Kustomize
-       -  https://www.densify.com/kubernetes-tools/kustomize/ Follow this and work with Kustomize.
-       -  https://github.com/viadee/kustomize-examples/tree/master
-          -  https://blog.viadee.de/kubernetes-deployments-mit-kustomize
-
-- Extract contents from https://ettoreciarcia.com/killersh-simulations/CKA.html
-  - Try to recreate scenarios?
 
 - To Learn:
   - Kustomize
   - HelmIO
-  - HPA

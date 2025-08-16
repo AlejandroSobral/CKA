@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: api-gateway
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      id: api-gateway
+  template:
+    metadata:
+      labels:
+        id: api-gateway
+    spec:
+      serviceAccountName: api-gateway
+      containers:
+        - image: httpd:2-alpine
+          name: httpd

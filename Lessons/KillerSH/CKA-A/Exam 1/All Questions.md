@@ -1,3 +1,7 @@
+## Resources
+- https://cloudutsuk.com/posts/certification/cka/cka-pratice-test-1/
+
+
 ### Question 1 
 
 Solve this question on: ssh cka9412
@@ -179,9 +183,73 @@ Solve this question on: ssh cka7968
 
 Create a new PersistentVolume named safari-pv. It should have a capacity of 2Gi, accessMode ReadWriteOnce, hostPath /Volumes/Data and no storageClassName defined.
 
-Next create a new PersistentVolumeClaim in Namespace project-t230 named safari-pvc . It should request 2Gi storage, accessMode ReadWriteOnce and should not define a storageClassName. The PVC should bound to the PV correctly.
+Next create a new PersistentVolumeClaim in Namespace project-t230 named safari-pvc. It should request 2Gi storage, accessMode ReadWriteOnce and should not define a storageClassName. The PVC should bound to the PV correctly.
 
 Finally create a new Deployment safari in Namespace project-t230 which mounts that volume at /tmp/safari-data. The Pods of that Deployment should be of image httpd:2-alpine.
+
+<details>
+
+<summary>q6.yaml</summary>
+
+```YAML
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: safari-pv
+spec:
+  capacity:
+    storage: 2Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  hostPath:
+    path: "/Volumes/Data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: safari-pvc
+  namespace: project-t230
+spec:
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: q5-deploy
+  name: q5-deploy
+  namespace: project-t230
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: q5-deploy
+  template:
+    metadata:
+      labels:
+        app: q5-deploy
+    spec:
+      volumes:
+      - name: safari-pv
+        persistentVolumeClaim:
+          claimName: safari-pvc
+      containers:
+      - name: httpd
+        image: httpd:2-alpine
+        volumeMounts:
+        - mountPath: "/tmp/safari-data"
+          name: safari-pv
+```
+
+
+
+</details>
 
 
 ----------------------------------------------------
