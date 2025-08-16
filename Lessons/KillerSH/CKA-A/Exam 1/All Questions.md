@@ -65,7 +65,7 @@ Check all available Pods in the Namespace project-c13 and find the names of thos
 
 <summary>q4.yaml</summary>
 
-```
+```YAML
 
 ---
 apiVersion: v1
