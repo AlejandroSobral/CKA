@@ -247,9 +247,21 @@ spec:
           name: safari-pv
 ```
 
-
+Check the status:
+```bash
+controlplane:~# k get pv
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM                     STORAGECLASS   VOLUMETRIBUTESCLASS   REASON   AGE
+pvc-3203d2c9-c3a4-4172-85e5-7ab67291a226   2Gi        RWO            Delete           Bound       project-t230/safari-pvc   local-path     <unset>               15s
+safari-pv                                  2Gi        RWO            Retain           Available                               <unset>        <unset>                        6m1s
+controlplane:~# k get pvc
+NAME          STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMETRIBUTESCLASS   AGE
+safari-pvc    Bound    pvc-3203d2c9-c3a4-4172-85e5-7ab67291a226   2Gi        RWO            local-path     <unset>               5m30s
+controlplane:~#
+```
 
 </details>
+
+
 
 
 ----------------------------------------------------
