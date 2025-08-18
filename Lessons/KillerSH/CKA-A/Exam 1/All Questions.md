@@ -274,6 +274,69 @@ The metrics-server has been installed in the cluster. Write two bash scripts whi
 - Script /opt/course/7/node.sh should show resource usage of Nodes
 - Script /opt/course/7/pod.sh should show resource usage of Pods and their containers
 
+
+To make it work in any CKA simulator; consider the following:
+
+#### Scenario creation
+
+Resource:
+ -  https://github.com/kubernetes-sigs/metrics-server/issues/917
+
+```
+curl -LJO kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+Add: --kubelet-insecure-tls
+```
+
+```YAML
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: metrics-server
+  name: metrics-server
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      k8s-app: metrics-server
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        k8s-app: metrics-server
+    spec:
+      containers:
+      - args:
+        - --cert-dir=/tmp
+        - --secure-port=10250
+        - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+        - --kubelet-use-node-status-port
+        - --metric-resolution=15s
+        - --kubelet-insecure-tls
+```
+
+
+
+Resources to list:
+	k create deployment my-dep --image=nginx --replicas=2 
+Nodes:
+	(Deploy in any two-nodes Cluster).
+	
+Scripts:
+  ```bash
+	#/bin/bash!
+	kubectl top pods --containers=true
+	```
+	
+  ```bash
+	#/bin/bash!
+	kubectl top nodes
+  ```
+
+
+
 ----------------------------------------------------
 ### Question 8
 
