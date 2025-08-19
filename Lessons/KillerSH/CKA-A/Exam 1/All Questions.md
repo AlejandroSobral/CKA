@@ -1,6 +1,10 @@
 ## Resources
 - https://cloudutsuk.com/posts/certification/cka/cka-pratice-test-1/
 
+## TO DO
+
+Check questions 10-11-12 (Test).
+
 
 ### Question 1 
 
@@ -365,8 +369,27 @@ Write the result into file /opt/course/9/result.json.
 
 ### Question 10
 
-Create a new ServiceAccount processor in Namespace project-hamster. Create a Role and RoleBinding, both named processor as well. These should allow the new SA to only create Secrets and ConfigMaps in that Namespace.
+Create a new ServiceAccount "processor" in Namespace project-hamster. 
+Create a Role and RoleBinding, both named processor as well. These should allow the new SA to only create Secrets and ConfigMaps in that Namespace.
 
+<details>
+<summary> Q10 resolution </summary>
+
+RBAC entities creation:
+```bash
+k create sa processor ## ServiceAccount
+k create role processor --verb=create  --resource=secret,configmaps # Role
+k create rolebinding processor --role=processor --serviceaccount=default:processor # RoleBinding
+```
+Confirmation:
+```bash
+controlplane:~$ k auth can-i create secrets --as=system:serviceaccount:default:processor
+yes
+controlplane:~$ k auth can-i create configmap --as=system:serviceaccount:default:processor
+yes
+```
+
+</details>
 
 ----------------------------------------------------
 
@@ -375,6 +398,52 @@ Create a new ServiceAccount processor in Namespace project-hamster. Create a Rol
 Solve this question on: ssh cka2556
 
 Use Namespace project-tiger for the following. Create a DaemonSet named ds-important with image httpd:2-alpine and labels id=ds-important and uuid=18426a0b-5f59-4e10-923f-c0e078e82462. The Pods it creates should request 10 millicore cpu and 10 mebibyte memory. The Pods of that DaemonSet should run on all nodes, also controlplanes.
+
+
+```bash
+controlplane:~$ k get pods -o wide -n project-tiger
+NAME             READY   STATUS    RESTARTS   AGE     IP            NODE         NOMINATED NODE   READINESS GATES
+ds-important-jg7k9   1/1     Running   0          11s     192.168.0.4   controlplane   <none>           <none>
+ds-important-wj4c4   1/1     Running   0          11s     192.168.1.4   node01       <none>           <none>
+```
+
+
+```bash
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ds-important
+  namespace: project-tiger
+  labels:
+    id: ds-important
+    uuid: 18426a0b-5f59-4e10-923f-c0e078e82462
+spec:
+  selector:
+    matchLabels:
+      id: ds-important
+      uuid: 18426a0b-5f59-4e10-923f-c0e078e82462
+  template:
+    metadata:
+      labels:
+        id: ds-important
+    spec:
+      tolerations:
+        # these tolerations are to have the daemonset runnable on control plane nodes
+        # remove them if your control plane nodes should not run pods
+        - key: node-role.kubernetes.io/control-plane
+          operator: Exists
+          effect: NoSchedule
+        - key: node-role.kubernetes.io/master
+          operator: Exists
+          effect: NoSchedule
+      containers:
+        - name: project-tiger
+          image: httpd:2-alpine
+          resources:
+            requests:
+              cpu: 10m
+              memory: 20Mi
+```
 
 ----------------------------------------------------
 
@@ -391,6 +460,45 @@ Implement the following in Namespace project-tiger:
 - There should only ever be one Pod of that Deployment running on one worker node, use topologyKey: kubernetes.io/hostname for this
 
 ℹ️ Because there are two worker nodes and the Deployment has three replicas the result should be that the third Pod won't be scheduled. In a way this scenario simulates the behaviour of a DaemonSet, but using a Deployment with a fixed number of replicas
+
+```YAML
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: deploy-important
+    name: deploy-important
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      id: deploy-important
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        id: deploy-important
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  - key: id
+                    operator: In
+                    values:
+                      - deploy-important
+              topologyKey: kubernetes.io/hostname
+      containers:
+        - image: nginx
+          name: nginx-alpine
+          resources: {}
+        - image: google/pause
+          name: pause
+status: {}
+```
+
 
 ----------------------------------------------------
 ### Question 13
