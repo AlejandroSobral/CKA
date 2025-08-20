@@ -3,7 +3,7 @@
 
 ## TO DO
 
-Check questions 10-11-12 (Test).
+Check questions 10-11-12.
 
 
 ### Question 1 
@@ -465,10 +465,9 @@ Implement the following in Namespace project-tiger:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
+  name: deploy-important
   labels:
     app: deploy-important
-    name: deploy-important
 spec:
   replicas: 3
   selector:
@@ -484,7 +483,7 @@ spec:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
-                matchLabels:
+                matchExpressions:
                   - key: id
                     operator: In
                     values:
@@ -499,6 +498,13 @@ spec:
 status: {}
 ```
 
+```bash
+kubectl get pods -o wide
+NAME                                READY   STATUS         RESTARTS   AGE   IP           NODE            NOMINATED NODE   READINESS GATES
+deploy-important-7b5b6b4565-4jnz4   0/2     Pending        0          20s   <none>       <none>          <none>           <none>
+deploy-important-7b5b6b4565-9t2ww   1/2     ErrImagePull   0          20s   10.244.0.4   talos-r7a-pwx   <none>           <none>
+deploy-important-7b5b6b4565-zpnbf   1/2     ErrImagePull   0          20s   10.244.2.2   talos-126-mts   <none>           <none>
+```
 
 ----------------------------------------------------
 ### Question 13
