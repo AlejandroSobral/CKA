@@ -593,3 +593,32 @@ Using command crictl:
 - Write the logs of the container into /opt/course/17/pod-container.log
 
 ℹ️ You can connect to a worker node using ssh cka2556-node1 or ssh cka2556-node2 from cka2556
+
+
+
+
+### Local Talos setup
+
+```bash
+export CONTROL_PLANE_NODE=192.168.1.22
+export WORKER_NODE_1=192.168.1.23
+export WORKER_NODE_2=192.168.1.24
+
+talosctl gen config TinyCluster https://$CONTROL_PLANE_NODE:6443 --output-dir _out
+talosctl apply-config --insecure --nodes $CONTROL_PLANE_NODE --file _out/controlplane.yaml
+
+talosctl config endpoint $CONTROL_PLANE_NODE
+talosctl config node $CONTROL_PLANE_NODE
+export TALOSCONFIG="_out/talosconfig"
+
+talosctl bootstrap --nodes $CONTROL_PLANE_NODE
+
+talosctl apply-config --insecure --nodes $WORKER_NODE_1 --file _out/worker.yaml
+talosctl apply-config --insecure --nodes $WORKER_NODE_2 --file _out/worker.yaml
+
+talosctl kubeconfig . --talosconfig _out/talosconfig
+export KUBECONFIG=./kubeconfig
+
+kubectl label node talos-qfk-og4  node-role.kubernetes.io/worker=worker
+kubectl label node talos-126-mts  node-role.kubernetes.io/worker=worker
+```
