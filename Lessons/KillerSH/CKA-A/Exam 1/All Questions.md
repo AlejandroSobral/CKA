@@ -528,6 +528,112 @@ curl r500.gateway:30080/auto -H "User-Agent: mobile"
 curl r500.gateway:30080/auto
 ```
 
+Setup scenario:
+```bash
+kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/standard-install.yaml
+k create ns project-r500
+```
+
+[Resources](https://gateway-api.sigs.k8s.io/api-types/httproute/#backendrefs-optional)
+
+<details>
+<summary>Provided YAML </summary>
+
+```YAML
+## Existing gateway
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+...
+  name: main
+  namespace: project-r500
+spec:
+  gatewayClassName: nginx
+  listeners:
+  - allowedRoutes:
+      namespaces:
+        from: Same
+    name: http
+    port: 80
+    protocol: HTTP
+...
+
+
+# cka7968:/opt/course/13/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: traffic-director
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: r500.gateway
+      http:
+        paths:
+          - backend:
+              service:
+                name: web-desktop
+                port:
+                  number: 80
+            path: /desktop
+            pathType: Prefix
+          - backend:
+              service:
+                name: web-mobile
+                port:
+                  number: 80
+            path: /mobile
+            pathType: Prefix
+```
+
+The HTTPRoute to be created:
+
+```YAML
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: traffic-director
+spec:
+  parentRefs:
+  - name: main
+  hostnames:
+  - r500.gateway
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /mobile
+    backendRefs:
+    - name: web-mobile
+      port: 80
+    - path:
+        type: PathPrefix
+        value: /desktop
+    backendRefs:
+    - name: web-desktop
+      port: 80
+  - matches:
+    - headers:
+      - type: Exact
+        name: User-Agent
+        value: mobile
+      path:
+        type: PathPrefix
+        value: /auto
+    backendRefs:
+    - name: web-mobile
+      port: 80
+  - matches:
+      path:
+        type: PathPrefix
+        value: /auto
+    backendRefs:
+    - name: web-desktop
+      port: 80
+```
+
+</details>
+
 ----------------------------------------------------
 ### Question 14
 
@@ -537,6 +643,25 @@ Perform some tasks on cluster certificates:
 
 - Check how long the kube-apiserver server certificate is valid using openssl or cfssl. Write the expiration date into /opt/course/14/expiration. Run the kubeadm command to list the expiration dates and confirm both methods show the same one
 - Write the kubeadm command that would renew the kube-apiserver certificate into /opt/course/14/kubeadm-renew-certs.sh
+
+</detail>
+<summary> Resolution </summary>
+
+```bash
+openssl x509 -in apiserver.crt -enddate | grep notAfter
+notAfter=Aug 19 09:03:32 2026 GMT
+
+kubeadm certs check-expiration | grep apiserver
+apiserver                  Aug 19, 2026 09:03 UTC 
+
+kubeadm certs renew apiserver
+[renew] Reading configuration from the "kubeadm-config" ConfigMap in namespace "kube-system"...
+[renew] Use 'kubeadm init phase upload-config --config your-config-file' to re-upload it.
+
+certificate for serving the Kubernetes API renewed
+```
+
+</details>
 
 ----------------------------------------------------
 
@@ -557,6 +682,32 @@ Use the app Pod labels in your policy.
 ℹ️ All Pods in the Namespace run plain Nginx images. This allows simple connectivity tests like: k -n project-snake exec POD_NAME -- curl POD_IP:PORT
 ℹ️ For example, connections from backend-* Pods to vault-* Pods on port 3333 should no longer work
 
+
+```YAML
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: np-backend
+spec:
+  podSelector:
+    matchLabels:
+      app: my-pods
+  policyTypes:
+    - Egress
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          key: pod-label
+    ports:
+    - port: 1111
+  - to:
+    - podSelector:
+        matchLabels:
+          key: pod-label-2
+    ports:
+    - port: 2222
+```
 
 
 ----------------------------------------------------
