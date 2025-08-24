@@ -730,6 +730,89 @@ nslookup kubernetes.default.svc.cluster.local
 nslookup kubernetes.default.svc.custom-domain
 ```
 
+
+Solution:
+```bash
+# Get the configmap that determines the behaviour of CoreDNS:
+k get cm -n kube-system coredns -o yaml > configmap.yaml
+
+# Get the configuration of the deployment
+k get deployment coredns -o yaml -n kube-system > coredns.yaml
+
+# Run an example Pod to execute the nslookup
+kubectl run my-pod --image=alpine:3.18 --command -- /bin/sh -c "sleep 3600"
+
+# Original ConfigMap
+
+apiVersion: v1
+data:
+  Corefile: |
+    .:53 {
+        errors
+        health {
+           lameduck 5s
+        }
+        ready
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+           pods insecure
+           fallthrough in-addr.arpa ip6.arpa
+           ttl 30
+        }
+        prometheus :9153
+        forward . /etc/resolv.conf {
+           max_concurrent 1000
+        }
+        cache 30 {
+           disable success cluster.local
+           disable denial cluster.local
+        }
+        loop
+        reload
+        loadbalance
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-08-19T09:03:55Z"
+  name: coredns
+  namespace: kube-system
+  resourceVersion: "227"
+  uid: f6e43a2b-9471-450b-ae97-beca57093875
+...
+..
+.
+
+# Add the custom-domain line:
+
+...
+        kubernetes cluster.local custom-domain in-addr.arpa ip6.arpa {
+           pods insecure
+           fallthrough in-addr.arpa ip6.arpa
+           ttl 30
+        }
+...
+
+# Apply and rollout coredns Deployment
+k -n kube-system rollout restart deploy coredns 
+deployment.apps/coredns restarted
+
+# Test the DNS resolution for Svc
+k exec my-pod -it -- nslookup kubernetes.default.svc.cluster.local
+Server:         10.96.0.10
+Address:        10.96.0.10:53
+
+Name:   kubernetes.default.svc.cluster.local
+Address: 10.96.0.1
+
+
+k exec my-pod -it -- nslookup kubernetes.default.svc.custom-domain
+Server:         10.96.0.10
+Address:        10.96.0.10:53
+
+Name:   kubernetes.default.svc.custom-domain
+Address: 10.96.0.1
+```
+
+
 ----------------------------------------------------
 
 ### Question 17
@@ -745,10 +828,74 @@ Using command crictl:
 
 ℹ️ You can connect to a worker node using ssh cka2556-node1 or ssh cka2556-node2 from cka2556
 
+<details>
+
+<summary> Q17 solution </summary>
+
+```bash
+
+# Create Namespace
+controlplane:~$ k create ns project-tiger
+namespace/project-tiger created
+controlplane:~$ k config set-context --current --namespace project-tiger 
+Context "kubernetes-admin@kubernetes" modified.
+
+# Run a pod with its labels
+controlplane:~$ k run tigers-reunite --image=httpd:2-alpine --labels="pod=container,container=pod"
+pod/tigers-reunite created
+
+# Look for the Node
+controlplane:~$ k get pods -o wide
+NAME             READY   STATUS    RESTARTS   AGE   IP            NODE     NOMINATED NODE   READINESS GATES
+tigers-reunite   1/1     Running   0          13s   192.168.1.5   node01   <none>           <none>
+
+# Get containerID from describe command (1st method, but from controlplane node)
+controlplane:~$ k describe pod tigers-reunite | grep containerd
+    Container ID:   containerd://e8aafae87e09eca8a49b12197bf86854d9ebc877fd642271c56653a1a0dfbfce
+
+# Connect to node01
+controlplane:~$ ssh node01
+Last login: Sun Aug 24 17:37:47 2025 from 10.244.5.113
+
+# Get container ID from checking containers logs (2nd)
+node01:/var/log/containers$ ls
+...
+..
+tigers-reunite_project-tiger_tigers-reunite-e8aafae87e09eca8a49b12197bf86854d9ebc877fd642271c56653a1a0dfbfce.log ## ->> CointainerID e8aafae87e09eca8a49b12197bf86854d9ebc877fd642271c56653a1a0dfbfce
+..
+...
+
+# Get ContainerID from crictl
+node01:~$ crictl ps --output table --no-trunc | grep tigers-reunite
+e8aafae87e09eca8a49b12197bf86854d9ebc877fd642271c56653a1a0dfbfce   sha256:413c1ac706f85ca3fe6b5fb02e8d77fd8368eea52cfaa8d4542e7c3b9025d947   44 minutes ago      Running             tigers-reunite      0                   17c6746c762a0e1e902ef6fbd232952450fa95e3f0d7f4effacb548d69efff20   tigers-reunite             project-tiger
+
+## ContainerID into the file
+echo "e8aafae87e09eca8a49b12197bf86854d9ebc877fd642271c56653a1a0dfbfce" >> /opt/course/17/pod-container.txt
 
 
+node01:~$ crictl inspect e8aafae87e09eca8a49b12197bf86854d9ebc877fd642271c56653a1a0dfbfce | grep runtimeType
+    "runtimeType": "io.containerd.runc.v2",
 
-### Local Talos setup
+## Container logs
+node01:~$ crictl logs e8aafae87e09eca8a49b12197bf86854d9ebc877fd642271c56653a1a0dfbfce
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 192.168.1.5. Set the 'ServerName' directive globally to suppress this message
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 192.168.1.5. Set the 'ServerName' directive globally to suppress this message
+[Sun Aug 24 17:35:44.373333 2025] [mpm_event:notice] [pid 1:tid 1] AH00489: Apache/2.4.65 (Unix) configured -- resuming normal operations
+[Sun Aug 24 17:35:44.378257 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'httpd -D FOREGROUND'
+```
+
+</details>
+
+
+----------------------------------
+
+Extras:
+
+<details>
+
+<summary>  Local Talos setup </summary>
+
+
 
 ```bash
 export CONTROL_PLANE_NODE=192.168.1.22
@@ -773,3 +920,5 @@ export KUBECONFIG=./kubeconfig
 kubectl label node talos-qfk-og4  node-role.kubernetes.io/worker=worker
 kubectl label node talos-126-mts  node-role.kubernetes.io/worker=worker
 ```
+
+</details>
