@@ -4,6 +4,10 @@
 ## TO DO
 
 Check questions 10-11-12.
+Pending:
+  - Q4, check qualities 
+  - Q9 - NOT DONE.
+  - Q13 (Gateway)
 
 
 ### Question 1 
