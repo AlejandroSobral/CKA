@@ -926,3 +926,25 @@ kubectl label node talos-126-mts  node-role.kubernetes.io/worker=worker
 ```
 
 </details>
+
+
+
+<details>
+
+<summary>  List resources using the API. </summary>
+
+
+Q algo
+```bash
+k run test-pod --image=nginx --command -- sh -c "tail -f /dev/null"
+
+k create role my-role --verb=get,create,list --resource=pods,deployments
+
+k create rolebinding my-rb --role=my-role --serviceaccount=default:default
+
+VAR=$(k exec test-pod -it -- cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+
+k exec test-pod -it -- curl -k https://kubernetes.default/api/v1/namespaces/default/pods -H "Authorization: Bearer $VAR"
+```
+
+</details>
