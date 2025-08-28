@@ -1,14 +1,10 @@
 ## Resources
 - https://cloudutsuk.com/posts/certification/cka/cka-pratice-test-1/
 
+
 ## TO DO
 
-Check questions 10-11-12.
-Pending:
-  - Q4, check qualities 
-  - Q9 - NOT DONE.
-  - Q13 (Gateway)
-
+Answer remaining questions.
 
 ### Question 1 
 
@@ -46,6 +42,47 @@ Install the MinIO Operator using Helm in Namespace minio. Then configure and cre
 - Install Helm chart minio/operator into the new Namespace. The Helm Release should be called minio-operator
 - Update the Tenant resource in /opt/course/2/minio-tenant.yaml to include enableSFTP: true under features
 - Create the Tenant resource from /opt/course/2/minio-tenant.yaml
+
+```bash
+k create ns minio
+
+helm install minio minio/operator -n minio
+
+helm repo add minio-operator https://operator.min.io ## Configured during the exam
+```
+
+```YAML
+apiVersion: minio.min.io/v2
+kind: Tenant
+metadata:
+  name: tenant
+  namespace: minio
+  labels:
+    app: minio
+spec:
+  features:
+    bucketDNS: false
+    enableSFTP: true                     # ADD
+  image: quay.io/minio/minio:latest
+  pools:
+    - servers: 1
+      name: pool-0
+      volumesPerServer: 0
+      volumeClaimTemplate:
+        apiVersion: v1
+        kind: persistentvolumeclaims
+        metadata: { }
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Mi
+          storageClassName: standard
+        status: { }
+  requestAutoCert: true
+```
+
 
 ----------------------------------------------------
 
