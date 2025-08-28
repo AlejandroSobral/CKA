@@ -369,6 +369,27 @@ Exec into the Pod and use curl to manually query all Secrets from the Kubernetes
 
 Write the result into file /opt/course/9/result.json.
 
+<details>
+
+<summary>  List resources using the API. </summary>
+
+- Resource:
+  - https://kubernetes.io/docs/tasks/run-application/access-api-from-pod/
+
+```bash
+k create sa my-sa
+k create role my-role --verb=get,create,list --resource=pod
+k create rolebinding my-rb --role=my-role --serviceaccount=default:my-sa
+k run pod --image=nginx --dry-run=client -o yaml --command -- /bin/bash -c "tail -f /dev/null" > pod.yaml
+
+## Add spec.serviceAccountName: my-sa
+k apply -f pod.yaml 
+VAR=$(k exec pod -it -- cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+k exec pod -it -- curl -k https://kubernetes.default/api/v1/namespaces/default/pods -H "Authorization: Bearer $VAR"
+```
+
+</details>
+
 ----------------------------------------------------
 
 ### Question 10
@@ -548,7 +569,6 @@ k create ns project-r500
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-...
   name: main
   namespace: project-r500
 spec:
@@ -603,6 +623,7 @@ spec:
   hostnames:
   - r500.gateway
   rules:
+
   - matches:
     - path:
         type: PathPrefix
@@ -610,12 +631,15 @@ spec:
     backendRefs:
     - name: web-mobile
       port: 80
+
+  - matches:
     - path:
         type: PathPrefix
         value: /desktop
     backendRefs:
     - name: web-desktop
       port: 80
+
   - matches:
     - headers:
       - type: Exact
@@ -627,6 +651,7 @@ spec:
     backendRefs:
     - name: web-mobile
       port: 80
+
   - matches:
       path:
         type: PathPrefix
@@ -929,22 +954,3 @@ kubectl label node talos-126-mts  node-role.kubernetes.io/worker=worker
 
 
 
-<details>
-
-<summary>  List resources using the API. </summary>
-
-
-Q algo
-```bash
-k run test-pod --image=nginx --command -- sh -c "tail -f /dev/null"
-
-k create role my-role --verb=get,create,list --resource=pods,deployments
-
-k create rolebinding my-rb --role=my-role --serviceaccount=default:default
-
-VAR=$(k exec test-pod -it -- cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-
-k exec test-pod -it -- curl -k https://kubernetes.default/api/v1/namespaces/default/pods -H "Authorization: Bearer $VAR"
-```
-
-</details>
