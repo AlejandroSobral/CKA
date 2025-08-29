@@ -5,6 +5,8 @@
 ## TO DO
 
 Answer remaining questions.
+  - repeat https://killercoda.com/chadmcrowell/course/cka/create-gateway-and-route (Sat)
+  - New B exman on Sunday.
 
 ### Question 1 
 
