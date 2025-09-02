@@ -3,6 +3,7 @@
 
 - Get familiar with jobs
 - Understand again how PV and PVCs work.
+- What CDR are?
 
 
 ## Question 3
@@ -17,7 +18,7 @@ Write the information into file /opt/course/3/certificate-info.txt.
 ```
 
 
-Resoulution:
+Resolution:
 ```bash
 openssl x509 -in /var/lib/kubelet/pki/kubelet-client-current.pem -issuer -noout >> /opt/course/3/certificate-info.txt 
 openssl x509 -in /var/lib/kubelet/pki/kubelet.crt -issuer -noout >> /opt/course/3/certificate-info.txt 
@@ -110,4 +111,75 @@ spec:
             - name: backup
               mountPath: /backup
       restartPolicy: Never
+```
+
+## Question 17
+
+
+```
+There is Kustomize config available at /opt/course/17/operator. It installs an operator which works with different CRDs. 
+It has been deployed like this:
+```
+
+> kubectl kustomize /opt/course/17/operator/prod | kubectl apply -f -
+
+```
+Perform the following changes in the Kustomize base config:
+```
+
+- The operator needs to list certain CRDs. 
+  - Check the logs to find out which ones and adjust the permissions for Role operator-role
+  - Add a new Student resource called student4 with any name and description
+
+- Deploy your Kustomize config changes to prod.
+
+
+```YAML
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: classes.education.killer.sh
+spec:
+  group: education.killer.sh
+...
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: students.education.killer.sh
+spec:
+  group: education.killer.sh
+...
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: operator
+  namespace: NAMESPACE_REPLACE
+...
+```
+
+Prod:
+```YAML
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: classes.education.killer.sh
+spec:
+  group: education.killer.sh
+...
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: students.education.killer.sh
+spec:
+  group: education.killer.sh
+...
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: operator
+  namespace: operator-prod
 ```

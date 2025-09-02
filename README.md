@@ -27,6 +27,8 @@ Should you happen to find some bug, do not hesitate to report it.
 - Bookmark:
   - Exam A: https://killer.sh/attendee/df264a28-5063-4d6f-a0dd-24574706967d/content
 
-- To Learn:
-  - Kustomize
-  - HelmIO
+&nbsp;
+
+More material to check:
+
+https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Mock-Exams/Mock-Exam-2-Step-by-Step-Solutions
