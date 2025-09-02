@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://killer.sh/attendee/24f2863d-834f-4d7b-9701-591c1c0b005a/score -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Linux Foundation CKS CKA CKAD LFCS LFCT Kubernetes Linux Exam Simulators / Example Questions / Practice Exam">
+  <meta name="keywords" content="kubernetes,kubectl,cks,ckad,cka,lfcs,lfct,linux,docker,simulator,questions,example,practice,teaching,training">
+  <meta name="author" content="KLLR GmbH">
+  <meta name="google-site-verification" content="8KZvgw2oyOKhIAaNqsU2uTLFGaONMBKA19G9OPeuDTg">
+  <meta name="title" content="Killer Shell - Exam Simulators">
+
+  <meta property="og:title" content="Killer Shell - Exam Simulators">
+  <meta property="og:image" content="https://killer.sh/meta_v2.png">
+  <meta property="og:description" content="Linux Foundation CKS CKA CKAD LFCS LFCT Kubernetes Linux Exam Simulators / Example Questions / Practice Exam">
+  <meta property="og:url" content="https://killer.sh">
+
+  <meta name="twitter:title" content="Killer Shell - Exam Simulators">
+  <meta name="twitter:description" content="Linux Foundation CKS CKA CKAD LFCS LFCT Kubernetes Linux Exam Simulators / Example Questions / Practice Exam">
+  <meta name="twitter:image" content="https://killer.sh/meta_v2.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style type="text/css">:root, :host {
+  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+  --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";
+  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";
+  --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-regular: normal 400 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-light: normal 300 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-thin: normal 100 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+  --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-light: normal 300 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-thin: normal 100 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-duotone-solid: normal 900 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-regular: normal 400 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-light: normal 300 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-thin: normal 100 1em/1 "Font Awesome 6 Sharp Duotone";
+}
+
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-2xs {
+  vertical-align: 0.1em;
+}
+.svg-inline--fa.fa-xs {
+  vertical-align: 0em;
+}
+.svg-inline--fa.fa-sm {
+  vertical-align: -0.0714285705em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.2em;
+}
+.svg-inline--fa.fa-xl {
+  vertical-align: -0.25em;
+}
+.svg-inline--fa.fa-2xl {
+  vertical-align: -0.3125em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-li {
+  width: var(--fa-li-width, 2em);
+  top: 0.25em;
+}
+.svg-inline--fa.fa-fw {
+  width: var(--fa-fw-width, 1.25em);
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  transform-origin: center center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: var(--fa-counter-background-color, #ff253a);
+  border-radius: var(--fa-counter-border-radius, 1em);
+  box-sizing: border-box;
+  color: var(--fa-inverse, #fff);
+  line-height: var(--fa-counter-line-height, 1);
+  max-width: var(--fa-counter-max-width, 5em);
+  min-width: var(--fa-counter-min-width, 1.5em);
+  overflow: hidden;
+  padding: var(--fa-counter-padding, 0.25em 0.5em);
+  right: var(--fa-right, 0);
+  text-overflow: ellipsis;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-counter-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: var(--fa-bottom, 0);
+  right: var(--fa-right, 0);
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: var(--fa-bottom, 0);
+  left: var(--fa-left, 0);
+  right: auto;
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  top: var(--fa-top, 0);
+  right: var(--fa-right, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: var(--fa-left, 0);
+  right: auto;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top left;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-2xs {
+  font-size: 0.625em;
+  line-height: 0.1em;
+  vertical-align: 0.225em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+  line-height: 0.0833333337em;
+  vertical-align: 0.125em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+  line-height: 0.0714285718em;
+  vertical-align: 0.0535714295em;
+}
+
+.fa-lg {
+  font-size: 1.25em;
+  line-height: 0.05em;
+  vertical-align: -0.075em;
+}
+
+.fa-xl {
+  font-size: 1.5em;
+  line-height: 0.0416666682em;
+  vertical-align: -0.125em;
+}
+
+.fa-2xl {
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: var(--fa-li-margin, 2.5em);
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: calc(-1 * var(--fa-li-width, 2em));
+  position: absolute;
+  text-align: center;
+  width: var(--fa-li-width, 2em);
+  line-height: inherit;
+}
+
+.fa-border {
+  border-color: var(--fa-border-color, #eee);
+  border-radius: var(--fa-border-radius, 0.1em);
+  border-style: var(--fa-border-style, solid);
+  border-width: var(--fa-border-width, 0.08em);
+  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+}
+
+.fa-pull-left {
+  float: left;
+  margin-right: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-pull-right {
+  float: right;
+  margin-left: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-beat {
+  animation-name: fa-beat;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-bounce {
+  animation-name: fa-bounce;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+
+.fa-fade {
+  animation-name: fa-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-beat-fade {
+  animation-name: fa-beat-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-flip {
+  animation-name: fa-flip;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-shake {
+  animation-name: fa-shake;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin {
+  animation-name: fa-spin;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 2s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin-reverse {
+  --fa-animation-direction: reverse;
+}
+
+.fa-pulse,
+.fa-spin-pulse {
+  animation-name: fa-spin;
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, steps(8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-beat,
+.fa-bounce,
+.fa-fade,
+.fa-beat-fade,
+.fa-flip,
+.fa-pulse,
+.fa-shake,
+.fa-spin,
+.fa-spin-pulse {
+    animation-delay: -1ms;
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
+}
+@keyframes fa-beat {
+  0%, 90% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@keyframes fa-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+@keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@keyframes fa-beat-fade {
+  0%, 100% {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@keyframes fa-flip {
+  50% {
+    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+  }
+}
+@keyframes fa-shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  4% {
+    transform: rotate(15deg);
+  }
+  8%, 24% {
+    transform: rotate(-18deg);
+  }
+  12%, 28% {
+    transform: rotate(18deg);
+  }
+  16% {
+    transform: rotate(-22deg);
+  }
+  20% {
+    transform: rotate(22deg);
+  }
+  32% {
+    transform: rotate(-12deg);
+  }
+  36% {
+    transform: rotate(12deg);
+  }
+  40%, 100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  transform: scale(1, -1);
+}
+
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  transform: scale(-1, -1);
+}
+
+.fa-rotate-by {
+  transform: rotate(var(--fa-rotate-angle, 0));
+}
+
+.fa-stack {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: var(--fa-stack-z-index, auto);
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+
+.sr-only,
+.fa-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:not(:focus),
+.fa-sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}</style><style data-tippy-stylesheet="">.tippy-box[data-animation=fade][data-state=hidden]{opacity:0}[data-tippy-root]{max-width:calc(100vw - 10px)}.tippy-box{position:relative;background-color:#333;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;white-space:normal;outline:0;transition-property:transform,visibility,opacity}.tippy-box[data-placement^=top]>.tippy-arrow{bottom:0}.tippy-box[data-placement^=top]>.tippy-arrow:before{bottom:-7px;left:0;border-width:8px 8px 0;border-top-color:initial;transform-origin:center top}.tippy-box[data-placement^=bottom]>.tippy-arrow{top:0}.tippy-box[data-placement^=bottom]>.tippy-arrow:before{top:-7px;left:0;border-width:0 8px 8px;border-bottom-color:initial;transform-origin:center bottom}.tippy-box[data-placement^=left]>.tippy-arrow{right:0}.tippy-box[data-placement^=left]>.tippy-arrow:before{border-width:8px 0 8px 8px;border-left-color:initial;right:-7px;transform-origin:center left}.tippy-box[data-placement^=right]>.tippy-arrow{left:0}.tippy-box[data-placement^=right]>.tippy-arrow:before{left:-7px;border-width:8px 8px 8px 0;border-right-color:initial;transform-origin:center right}.tippy-box[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-arrow{width:16px;height:16px;color:#333}.tippy-arrow:before{content:"";position:absolute;border-color:transparent;border-style:solid}.tippy-content{position:relative;padding:5px 9px;z-index:1}</style><link rel="icon" href="https://killer.sh/favicon.ico">
+  <title>Killer Shell - Exam Simulators</title>
+  <script type="module" crossorigin="" src="./MyAnswers_files/index-B-KK4PvK.js.descarga"></script>
+  <link rel="stylesheet" crossorigin="" href="./MyAnswers_files/index-gmC9xQ70.css">
+</head>
+<body>
+<noscript>
+  <strong>Please enable JavaScript to continue.</strong>
+</noscript>
+<div id="app" data-v-app=""><div class="container-fluid" id="page-container"><!----><!----><div id="content-wrap"><nav><nav class="navbar bg-info navbar-expand-md navbar-dark bg-dark"><div class="container-fluid"><a class="navbar-brand" href="https://killer.sh/attendee/24f2863d-834f-4d7b-9701-591c1c0b005a/score#"><a href="https://killer.sh/" class=""><img src="data:image/svg+xml,%3c?xml%20version=%271.0%27%20encoding=%27utf-8%27?%3e%3c!--%20Generator:%20Adobe%20Illustrator%2026.0.2,%20SVG%20Export%20Plug-In%20.%20SVG%20Version:%206.00%20Build%200)%20--%3e%3csvg%20version=%271.1%27%20id=%27Ebene_1%27%20xmlns=%27http://www.w3.org/2000/svg%27%20xmlns:xlink=%27http://www.w3.org/1999/xlink%27%20x=%270px%27%20y=%270px%27%20viewBox=%270%200%201917.9%20781.8%27%20style=%27enable-background:new%200%200%201917.9%20781.8;%27%20xml:space=%27preserve%27%3e%3cstyle%20type=%27text/css%27%3e%20.st0{fill:%23FFFFFF;}%20%3c/style%3e%3cpath%20class=%27st0%27%20d=%27M1743.1,138.3L1890.8,0h-235.6v286.3h43V150.1l138.7,136.2h58.9L1743.1,138.3z%20M1698.1,42.9h94.1l-94.1,90.4%20V42.9z%27/%3e%3cg%3e%3cdefs%3e%3crect%20id=%27SVGID_1_%27%20x=%27-6.4%27%20y=%270%27%20width=%271902.1%27%20height=%27781.8%27/%3e%3c/defs%3e%3cclipPath%20id=%27SVGID_00000106116965778409552490000011615941348305333637_%27%3e%3cuse%20xlink:href=%27%23SVGID_1_%27%20style=%27overflow:visible;%27/%3e%3c/clipPath%3e%3c/g%3e%3cpolygon%20class=%27st0%27%20points=%271358.8,777.7%201358.8,739.7%201194,739.7%201194,491.4%201151,491.4%201151,777.7%20%27/%3e%3cpolygon%20class=%27st0%27%20points=%271863,777.7%201863,739.7%201698.1,739.7%201698.1,491.4%201655.2,491.4%201655.2,777.7%20%27/%3e%3cpolygon%20class=%27st0%27%20points=%27756.4,489.2%20756.4,609.6%20612.6,609.6%20612.6,489.2%20571.6,489.2%20571.6,777.7%20612.6,777.7%20612.6,647.3%20756.4,647.3%20756.4,777.7%20797.4,777.7%20797.4,489.2%20%27/%3e%3cpolygon%20class=%27st0%27%20points=%27193.6,0%2054.9,133.4%2054.9,0%2012,0%2012,286.3%2054.9,286.3%2054.9,150.1%20193.6,286.3%20252.5,286.3%2099.9,138.3%20247.6,0%20%27/%3e%3cpolygon%20class=%27st0%27%20points=%27580.6,0%20580.6,286.3%20788.4,286.3%20788.4,248.3%20623.5,248.3%20623.5,0%20%27/%3e%3cpolygon%20class=%27st0%27%20points=%271151,0%201151,286.3%201358.8,286.3%201358.8,248.3%201194,248.3%201194,0%20%27/%3e%3cpath%20class=%27st0%27%20d=%27M211.8,661.7c-5.1-10.1-12-18.5-20.3-24.9c-8.3-6.4-17.5-11.7-27.5-15.8c-9.8-4.1-19.9-7.9-30-11.4%20c-9.9-3.4-19.1-7.2-27.3-11.3c-8.1-4-14.7-9-19.7-14.8c-4.9-5.7-7.4-13.3-7.4-22.6c0-11.7,4.4-20.9,13.2-27.4c8.8-6.6,21-9.9,36-9.9%20c12.4,0,23.5,2.5,33.1,7.3c9.6,4.9,18.7,12.3,27.1,22l0.8,0.9l27.9-27.9l-0.6-0.8c-9.4-11.9-21.7-21.6-36.7-29%20c-14.9-7.3-32-11-50.8-11c-17.1,0-32.7,3.2-46.4,9.4c-13.7,6.2-24.7,15.2-32.6,26.8c-7.9,11.5-11.9,25.7-11.9,42.1%20c0,14.9,2.5,27.4,7.5,37c5,9.6,11.9,17.6,20.3,23.7c8.4,6.1,17.7,11.2,27.7,15.2c9.8,4,19.8,7.6,29.8,11c9.8,3.3,18.9,7.1,27.1,11.3%20c8.1,4.2,14.7,9.5,19.6,16c4.9,6.4,7.4,14.9,7.4,25.3c0,12.5-5,22.4-15,29.6c-10.1,7.3-23.7,10.9-40.4,10.9%20c-17.1,0-31.6-3.2-43.2-9.6c-11.6-6.3-22-15.9-31-28.3l-0.8-1.1l-28,28l0.6,0.8c12.4,15.7,26.8,27.9,42.8,36.2%20c16,8.3,35.5,12.5,57.8,12.5c30.1,0,54.2-7.3,71.8-21.7c17.6-14.4,26.6-34.7,26.6-60.2C219.6,684.7,217,671.8,211.8,661.7z%27/%3e%3c/svg%3e" alt="logo" height="40px"></a></a><button class="navbar-toggler" type="button" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div id="nav-collapse" class="collapse navbar-collapse" is-nav="true" style="display: none;"><ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link" href="https://killer.sh/slack"><svg class="svg-inline--fa fa-slack fa-1x me-1 pull-left" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="slack" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="margin-top: 5px;"><path class="" fill="currentColor" d="M94.12 315.1c0 25.9-21.16 47.06-47.06 47.06S0 341 0 315.1c0-25.9 21.16-47.06 47.06-47.06h47.06v47.06zm23.72 0c0-25.9 21.16-47.06 47.06-47.06s47.06 21.16 47.06 47.06v117.84c0 25.9-21.16 47.06-47.06 47.06s-47.06-21.16-47.06-47.06V315.1zm47.06-188.98c-25.9 0-47.06-21.16-47.06-47.06S139 32 164.9 32s47.06 21.16 47.06 47.06v47.06H164.9zm0 23.72c25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06H47.06C21.16 243.96 0 222.8 0 196.9s21.16-47.06 47.06-47.06H164.9zm188.98 47.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06h-47.06V196.9zm-23.72 0c0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06V79.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06V196.9zM283.1 385.88c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06v-47.06h47.06zm0-23.72c-25.9 0-47.06-21.16-47.06-47.06 0-25.9 21.16-47.06 47.06-47.06h117.84c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06H283.1z"></path></svg></a></li><li class="nav-item"><a class="nav-link" href="https://killer.sh/attendee/24f2863d-834f-4d7b-9701-591c1c0b005a/score#"><a href="https://killer.sh/dashboard" class=""> Dashboard </a></a></li><li class="nav-item"><a class="nav-link" href="https://killer.sh/attendee/24f2863d-834f-4d7b-9701-591c1c0b005a/score#"><a href="https://killer.sh/account" class=""> Account </a></a></li><li class="nav-item"><a class="nav-link" href="https://killer.sh/attendee/24f2863d-834f-4d7b-9701-591c1c0b005a/score#"><a href="https://killer.sh/support" class=""> Support </a></a></li><li class="nav-item"><a class="nav-link" href="https://killer.sh/attendee/24f2863d-834f-4d7b-9701-591c1c0b005a/score#"><a href="https://killer.sh/order" class=""> Store </a></a></li><li class="nav-item"><a class="nav-link" href="https://killer.sh/attendee/24f2863d-834f-4d7b-9701-591c1c0b005a/score#"><a href="https://killer.sh/logout" class=""> Logout </a></a></li></ul></div></div></nav></nav><div><div><div><div data-v-ab945f07="" class="container bg-white min-vh-100 pb-3"><!----><span data-v-ab945f07=""><p data-v-ab945f07="" class="pt-3 small" style="text-align: center;"> You can access this page also inside the Remote Desktop by using the icons on the desktop </p><span data-v-ab945f07=""><div data-v-ab945f07="" class="p-3"><br data-v-ab945f07=""><br data-v-ab945f07=""><h1 data-v-ab945f07="" class="h3 text-center">Killer Shell CKA Simulator B Score</h1><div data-v-ab945f07="" style="text-align: center;"><small data-v-ab945f07="">24f2863d-834f-4d7b-9701-591c1c0b005a</small><br data-v-ab945f07=""><br data-v-ab945f07=""><p data-v-ab945f07=""><span data-v-ab945f07=""> This score will be calculated every few minutes<br data-v-ab945f07=""></span><small data-v-ab945f07=""><span data-v-ab945f07="">2025-08-31</span><span data-v-ab945f07="">&nbsp;&nbsp;&nbsp;(6 minutes ago)</span></small></p><small data-v-ab945f07=""><p data-v-ab945f07=""> The <strong data-v-ab945f07="">simulator difficulty</strong> is comparable to the real exam, but it can depend on the questions and topics you get. </p></small><br data-v-ab945f07=""><br data-v-ab945f07=""></div></div><section data-v-ab945f07="" class="container shadow-lg card p-3 border-0"><div data-v-ab945f07="" class="px-3"><div data-v-ab945f07="" class="d-flex justify-content-between align-items-center"><div data-v-ab945f07="" class="text-center"><span data-v-ab945f07="" class="text-dark small">Solved subtasks:</span><p data-v-ab945f07="" class="card sec-color text-white h3" style="min-width: 150px;">57 / 93</p></div><div data-v-ab945f07=""><span data-v-ab945f07="" class="text-dark small"></span><br data-v-ab945f07=""><!----><span data-v-ab945f07=""><h2 data-v-ab945f07="" class="px-3 py-2 h3 badge bg-warning">Medium Score</h2></span><!----><!----></div></div></div></section><section data-v-ab945f07=""><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 1</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">5</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">5</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">DNS_1 in ConfigMap correct</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">DNS_2 in ConfigMap correct</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">DNS_3 in ConfigMap correct</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">DNS_4 in ConfigMap correct</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Correct values from ConfigMap available in Deployment</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 2</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">7</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">7</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Static Pod my-static-pod-cka2560 exists</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod has single container</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod container has correct image</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod has correct CPU resource requests</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod has correct memory resource requests</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Service is of type NodePort</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Service selector matches Pod</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 3</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">4</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">4</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Kubelet Client Certificate Issuer is correct</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Kubelet Client Certificate Extended Key Usage is correct</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Kubelet Server Certificate Issuer is correct</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Kubelet Server Certificate Extended Key Usage is correct</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 4</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">11</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">11</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod1 is running</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod1 has single container</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod1 container is Ready</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod1 container has correct image</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod1 container has LivenessProbe</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod1 container has ReadinessProbe</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod2 is running</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod2 has correct label</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod2 has single container</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod2 container is Ready</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod2 container has correct image</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 5</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">2</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">2</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">File /opt/course/5/find_pods.sh valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">File /opt/course/5/find_pods_uid.sh valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 6</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">0</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">2</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Node is Ready</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod is created and running</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 7</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">2</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">2</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Version info correct</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Snapshot created</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 8</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">6</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">6</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Kubelet info valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Kube-apiserver info valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Kube-scheduler info valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Kube-controller-manager info valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">ETCD info valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">DNS info valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 9</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">4</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">10</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod1 is running in namespace default</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod1 is scheduled on cka5248</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod1 has single container</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod1 container has correct image</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod2 is running in namespace default</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod2 is scheduled on cka5248-node1</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod2 has single container</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod2 container has correct image</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">kube-scheduler-cka5248 is running</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">kube-scheduler-cka5248 was restarted</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 10</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">1</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">5</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">StorageClass created</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Job uses PVC</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">PVC uses StorageClass</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">PVC requests required storage</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Job created backups on the PVC</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 11</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">6</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">7</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Secret secret1 exists</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Secret secret2 exists</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod exists</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod has single container</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod container has correct image</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod mounts secret1 readonly</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod has secret2 env variables</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 12</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">5</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">6</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod is running</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod has single container</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Container has correct name</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Container has correct image</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod is scheduled on controlplane</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod will only be scheduled on controlplane nodes</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 13</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">1</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">11</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod is running</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod has three containers</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod has three Ready containers</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod container 1 has correct name</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod container 1 has correct image</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod container 1 has env variable MY_NODE_NAME</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod container 2 has correct name</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod container 2 has correct image</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod container 3 has correct name</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Pod container 3 has correct image</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">All Pod containers have volume mounted</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 14</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">2</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">5</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Answer 1 valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Answer 2 valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Answer 3 valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Answer 4 valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Answer 5 valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 15</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">1</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">3</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">File /opt/course/15/cluster_events.sh valid</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">File /opt/course/15/pod_kill.log contains correct logs</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">File /opt/course/15/container_kill.log contains correct logs</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-check text-success" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 16</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">0</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">2</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">File /opt/course/16/resources.txt contains namespaced resources</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">File /opt/course/16/crowded-namespace.txt correct content</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div><div data-v-ab945f07="" class="container"><ul data-v-ab945f07="" class="list-group mt-3 mb-3"><li data-v-ab945f07="" class="list-group-item description-bg d-flex justify-content-between align-items-center text-body"><span data-v-ab945f07="" class="font-weight-bold">Question 17</span><!----><span data-v-ab945f07="" class=""><span data-v-ab945f07="" class="h5">0</span><span data-v-ab945f07="" class="small text-dark"> of </span><span data-v-ab945f07="" class="h5">5</span></span></li><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Kustomize Role updated</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Operator has correct permissions</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Kustomize Student added in base</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Student created</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div><div data-v-ab945f07="" class="list-group-item"><li data-v-ab945f07="" class="list d-flex justify-content-between"><span data-v-ab945f07="">Kustomize Build base and prod without error after updates</span><span data-v-ab945f07=""><span data-v-ab945f07=""><svg data-v-ab945f07="" class="bi bi-x text-danger" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path data-v-ab945f07="" fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path data-v-ab945f07="" fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path></svg></span></span></li></div></ul></div></section></span></span></div></div></div></div></div><footer id="footer" class="py-5" style="margin-top: 10rem !important; position: relative;"><div class="container mx-auto"><div class="row d-flex justify-content-center"><div class="col-sm-12 col-md-4"><a href="https://killer.sh/" class=""><img src="data:image/svg+xml,%3c?xml%20version=%271.0%27%20encoding=%27utf-8%27?%3e%3c!--%20Generator:%20Adobe%20Illustrator%2026.0.2,%20SVG%20Export%20Plug-In%20.%20SVG%20Version:%206.00%20Build%200)%20--%3e%3csvg%20version=%271.1%27%20id=%27Ebene_1%27%20xmlns=%27http://www.w3.org/2000/svg%27%20xmlns:xlink=%27http://www.w3.org/1999/xlink%27%20x=%270px%27%20y=%270px%27%20viewBox=%270%200%201917.9%20781.8%27%20style=%27enable-background:new%200%200%201917.9%20781.8;%27%20xml:space=%27preserve%27%3e%3cstyle%20type=%27text/css%27%3e%20.st0{fill:%23FFFFFF;}%20%3c/style%3e%3cpath%20class=%27st0%27%20d=%27M1743.1,138.3L1890.8,0h-235.6v286.3h43V150.1l138.7,136.2h58.9L1743.1,138.3z%20M1698.1,42.9h94.1l-94.1,90.4%20V42.9z%27/%3e%3cg%3e%3cdefs%3e%3crect%20id=%27SVGID_1_%27%20x=%27-6.4%27%20y=%270%27%20width=%271902.1%27%20height=%27781.8%27/%3e%3c/defs%3e%3cclipPath%20id=%27SVGID_00000106116965778409552490000011615941348305333637_%27%3e%3cuse%20xlink:href=%27%23SVGID_1_%27%20style=%27overflow:visible;%27/%3e%3c/clipPath%3e%3c/g%3e%3cpolygon%20class=%27st0%27%20points=%271358.8,777.7%201358.8,739.7%201194,739.7%201194,491.4%201151,491.4%201151,777.7%20%27/%3e%3cpolygon%20class=%27st0%27%20points=%271863,777.7%201863,739.7%201698.1,739.7%201698.1,491.4%201655.2,491.4%201655.2,777.7%20%27/%3e%3cpolygon%20class=%27st0%27%20points=%27756.4,489.2%20756.4,609.6%20612.6,609.6%20612.6,489.2%20571.6,489.2%20571.6,777.7%20612.6,777.7%20612.6,647.3%20756.4,647.3%20756.4,777.7%20797.4,777.7%20797.4,489.2%20%27/%3e%3cpolygon%20class=%27st0%27%20points=%27193.6,0%2054.9,133.4%2054.9,0%2012,0%2012,286.3%2054.9,286.3%2054.9,150.1%20193.6,286.3%20252.5,286.3%2099.9,138.3%20247.6,0%20%27/%3e%3cpolygon%20class=%27st0%27%20points=%27580.6,0%20580.6,286.3%20788.4,286.3%20788.4,248.3%20623.5,248.3%20623.5,0%20%27/%3e%3cpolygon%20class=%27st0%27%20points=%271151,0%201151,286.3%201358.8,286.3%201358.8,248.3%201194,248.3%201194,0%20%27/%3e%3cpath%20class=%27st0%27%20d=%27M211.8,661.7c-5.1-10.1-12-18.5-20.3-24.9c-8.3-6.4-17.5-11.7-27.5-15.8c-9.8-4.1-19.9-7.9-30-11.4%20c-9.9-3.4-19.1-7.2-27.3-11.3c-8.1-4-14.7-9-19.7-14.8c-4.9-5.7-7.4-13.3-7.4-22.6c0-11.7,4.4-20.9,13.2-27.4c8.8-6.6,21-9.9,36-9.9%20c12.4,0,23.5,2.5,33.1,7.3c9.6,4.9,18.7,12.3,27.1,22l0.8,0.9l27.9-27.9l-0.6-0.8c-9.4-11.9-21.7-21.6-36.7-29%20c-14.9-7.3-32-11-50.8-11c-17.1,0-32.7,3.2-46.4,9.4c-13.7,6.2-24.7,15.2-32.6,26.8c-7.9,11.5-11.9,25.7-11.9,42.1%20c0,14.9,2.5,27.4,7.5,37c5,9.6,11.9,17.6,20.3,23.7c8.4,6.1,17.7,11.2,27.7,15.2c9.8,4,19.8,7.6,29.8,11c9.8,3.3,18.9,7.1,27.1,11.3%20c8.1,4.2,14.7,9.5,19.6,16c4.9,6.4,7.4,14.9,7.4,25.3c0,12.5-5,22.4-15,29.6c-10.1,7.3-23.7,10.9-40.4,10.9%20c-17.1,0-31.6-3.2-43.2-9.6c-11.6-6.3-22-15.9-31-28.3l-0.8-1.1l-28,28l0.6,0.8c12.4,15.7,26.8,27.9,42.8,36.2%20c16,8.3,35.5,12.5,57.8,12.5c30.1,0,54.2-7.3,71.8-21.7c17.6-14.4,26.6-34.7,26.6-60.2C219.6,684.7,217,671.8,211.8,661.7z%27/%3e%3c/svg%3e" alt="logo" width="90px"></a><a href="https://killer.sh/" class=""><p class="mt-5 small">About</p></a><a href="https://killer.sh/faq" class=""><p class="small">FAQ</p></a><a href="https://killer.sh/support" class=""><p class="small">Support</p></a><a href="https://killer.sh/order" class=""><p class="small">Store</p></a><a href="https://killer.sh/pricing" class=""><p class="small">Pricing</p></a><a href="https://killer.sh/impressum.html" target="_blank"><p class="small">Legal Notice / Impressum</p></a><a href="https://killer.sh/datenschutz.html" target="_blank"><p class="small">Privacy Policy / Datenschutz</p></a><a href="https://killer.sh/agb.html" target="_blank"><p class="small">Terms / AGB</p></a></div><div class="col-sm-12 col-md-4"><p class="mt-3">CONTENT</p><a href="https://killer.sh/cks" class=""><p class="mt-5 small">CKS</p></a><a href="https://killer.sh/cka" class=""><p class="small">CKA</p></a><a href="https://killer.sh/ckad" class=""><p class="small">CKAD</p></a><a href="https://killer.sh/lfcs" class=""><p class="small">LFCS</p></a></div><div class="col-sm-12 col-md-4"><p class="mt-3">LINKS</p><p class="mt-5"><a href="https://killercoda.com/" target="_blank" class="small">Killercoda</a></p><p><a href="https://www.linkedin.com/in/kimwuestkamp" target="_blank" class="small">Kim Wuestkamp</a></p><p><a href="https://twitter.com/_killer_shell" target="_blank" class="small"><svg class="svg-inline--fa fa-twitter fa-lg me-3" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path class="" fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg></a></p><p><a href="https://www.linkedin.com/company/killer-shell" target="_blank" class="small"><svg class="svg-inline--fa fa-linkedin fa-lg me-3" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path class="" fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a></p><p><a href="https://killer.sh/slack" class="small"><svg class="svg-inline--fa fa-slack fa-lg me-3" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="slack" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path class="" fill="currentColor" d="M94.12 315.1c0 25.9-21.16 47.06-47.06 47.06S0 341 0 315.1c0-25.9 21.16-47.06 47.06-47.06h47.06v47.06zm23.72 0c0-25.9 21.16-47.06 47.06-47.06s47.06 21.16 47.06 47.06v117.84c0 25.9-21.16 47.06-47.06 47.06s-47.06-21.16-47.06-47.06V315.1zm47.06-188.98c-25.9 0-47.06-21.16-47.06-47.06S139 32 164.9 32s47.06 21.16 47.06 47.06v47.06H164.9zm0 23.72c25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06H47.06C21.16 243.96 0 222.8 0 196.9s21.16-47.06 47.06-47.06H164.9zm188.98 47.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06h-47.06V196.9zm-23.72 0c0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06V79.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06V196.9zM283.1 385.88c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06v-47.06h47.06zm0-23.72c-25.9 0-47.06-21.16-47.06-47.06 0-25.9 21.16-47.06 47.06-47.06h117.84c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06H283.1z"></path></svg></a></p></div></div></div></footer><div class="cookie cookie__floating cookie__floating--bottom-left" id="myPanel1"><div class="cookie__floating__wrap"><!--v-if--><div class="cookie__floating__content"><div>We use cookies to ensure you get the best experience on our website.</div></div><div class="cookie__floating__buttons"><!--v-if--><button class="cookie__floating__buttons__button cookie__floating__buttons__button--accept"><div>OKAY</div></button></div></div></div><div></div></div></div>
+
+
+</body></html>
